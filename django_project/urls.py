@@ -16,15 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from apps.ecommerce.views import *
-
+from apps.producto.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name = 'home'),
-    path('acerca/', acerca, name='acerca'),
-    path('login/', login, name='login'),
-    path('registro/', registro, name='registro'),
-    path('contacto/', contacto, name='contacto'),
-    path('productos/', include(('apps.ecommerce.urls','ecommerce'))),
+    path('', include(('apps.ecommerce.urls','ecommerce'))),
+    path('productos/', include(('apps.producto.urls','producto'))),
     
 ]

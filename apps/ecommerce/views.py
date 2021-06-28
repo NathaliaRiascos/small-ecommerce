@@ -16,16 +16,6 @@ def acerca(request):
 def contacto(request):
     return render(request, 'contacto.html')
 
-def productos(request):
-    return render(request, 'productos.html', {
-        'producto': 'Hola'
-    })
-    
-def detalleProducto(request):
-    return render(request, 'producto/producto.html')
+def carrito(request):
+    return render(request, 'carrito.html')
 
-def crearProducto(request):
-    '''if request.method == 'POST':
-        print(request.POST)'''
-        
-    return render(request, 'producto/newproducto.html')

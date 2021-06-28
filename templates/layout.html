@@ -24,7 +24,7 @@
     <header class="row mt-2">
       <a class="col navbar-brand text-left" href="#">Navbar</a>
       <form class="w-100 buscador">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
       </form>
       <nav class="col pt-0 navbar navbar-expand-lg navbar-light">
         <div class="container-fluid p-0">
@@ -35,16 +35,16 @@
           <div class="collapse justify-content-end navbar-collapse" id="navbarNav">
             <ul class="navbar-nav text-right">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="{% url 'login' %}">Login</a>
+                <a class="nav-link" aria-current="page" href="{% url 'ecommerce:login' %}">Login</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'registro' %}">Registro</a>
+                <a class="nav-link" href="{% url 'ecommerce:registro' %}">Registro</a>
               </li>
               <li class="nav-item">
-                <button class="btn btn-outline-dark d-flex" type="submit">
+                <a class="btn btn-outline-dark d-flex" href="{% url 'ecommerce:carrito' %}">
                   <i class="bi-cart-fill me-1"></i>
                   Carrito
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -56,7 +56,7 @@
       <div class="container-fluid">
           <ul class="navbar-nav flex-row mx-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'ecommerce:home' %}">Home</a>
             </li>
             <li class="nav-item dropdown alig-items-center">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -70,13 +70,13 @@
             </li>
     
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'acerca'%}">Acerca de...</a>
+              <a class="nav-link" href="{% url 'ecommerce:acerca'%}">Acerca de...</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
+              <a class="nav-link" href="{% url 'ecommerce:contacto' %}">Contacto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'ecommerce:crear_producto' %}">Nuevo producto</a>
+              <a class="nav-link" href="{% url 'producto:crear_producto' %}">Nuevo producto</a>
             </li>
           </ul>
       </div>

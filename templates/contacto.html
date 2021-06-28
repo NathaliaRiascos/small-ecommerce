@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block contenido %}
+<!-- Product section-->
+<form class="contenedor border rounded mx-auto p-5">
+    {% csrf_token %}
+    <h2 class="mb-4 text-center">Contacto</h2>
+    <div class="mb-4">
+        <label for="formGroupExampleInput" class="form-label">Nombre</label>
+        <input type="text" class="form-control" name="nombre"  id="formGroupExampleInput" placeholder="Ingresa tu correo">
+      </div>
+      <div class="mb-4">
+        <label for="formGroupExampleInput2" class="form-label">Correo</label>
+        <input type="email" class="form-control"  name="email" id="formGroupExampleInput2" placeholder="Ingresa tu contrasea">
+      </div>
+
+      <!-- Input descripción -->
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
+        <textarea class="form-control form_input" name="mensaje" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+
+      <button type="submit" class="btn btn-primary float-end ">Enviar</button>
+</form>
+{% endblock contenido %}

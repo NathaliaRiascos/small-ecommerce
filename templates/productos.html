@@ -21,7 +21,11 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                        {% if user.is_authenticated and user.is_staff %}
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'producto:crear_producto' %}">Ver opciones</a></div>
+                        {% else %}
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'producto:detalle_producto' %}">Ver producto</a></div>
+                        {% endif%}
                     </div>
                 </div>
             </div>

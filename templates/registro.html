@@ -2,12 +2,12 @@
 {% load static %}
 
 {% block contenido %}
-<form class="contenedor border rounded mx-auto p-5">
+<form class="contenedor border rounded mx-auto p-5" method="POST">
     {% csrf_token %}
     <h2 class="mb-4">Registrarse</h2>
     <div class="mb-4">
         <label for="formGroupExampleInput" class="form-label">Nombre de usuario</label>
-        <input type="text" class="form-control" name="username" id="formGroupExampleInput" placeholder="Ingresa tu correo">
+        <input type="text" class="form-control" name="username" id="formGroupExampleInput" placeholder="Ingresa tu nombre de usuario">
     </div>
     <div class="mb-4">
         <label for="formGroupExampleInput" class="form-label">Correo</label>
@@ -19,12 +19,12 @@
     </div>
     <div class="mb-2">
         <label for="formGroupExampleInput2" class="form-label">Repetir contraseña</label>
-        <input type="password" class="form-control" name="repeat_password" id="formGroupExampleInput2" placeholder="Ingresa tu contrasea">
+        <input type="password" class="form-control" name="password2" id="formGroupExampleInput2" placeholder="Ingresa tu contrasea">
     </div>
     <p>¿Ya tienes una cuenta?
         <a href="{% url 'ecommerce:login' %}" class="btn btn-link">Click aquí</a>
     </p>
-    <button type="button" class="btn btn-primary float-end ">Crear cuenta</button>
+    <button type="submit" class="btn btn-primary float-end ">Crear cuenta</button>
 </form>
 
 {% endblock contenido %}

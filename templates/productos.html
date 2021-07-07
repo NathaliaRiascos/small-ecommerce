@@ -2,33 +2,45 @@
 {% load static %}
 
 {% block contenido %}
-<h4>Lista de productos</h4>
-<section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <div class="col mb-5">
+{% if productos %}
+<h3 class="text-center fw-light mb-2">Lista de productos</h3>
+<section class="py-4">
+    <div class="container p-0">
+        <div class="row contenedor-card gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-start">
+
+            {% for product in productos %}
+            <div class="col card-producto mb-5">
                 <div class="card h-100">
                     <!-- Product image-->
-                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                    <img class="card-img-top imagen" src="{{product.imagen.url|default_if_none:'#'}}" alt="..." />
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
                             <!-- Product name-->
-                            <h5 class="fw-bolder">Fancy Product</h5>
+                            <h5 class="fw-bolder">{{product.titulo}}</h5>
                             <!-- Product price-->
-                            $40.00 - $80.00
+                            ${{product.precio}}
                         </div>
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        {% if user.is_authenticated and user.is_staff %}
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'producto:crear_producto' %}">Ver opciones</a></div>
-                        {% else %}
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'producto:detalle_producto' %}">Ver producto</a></div>
-                        {% endif%}
+                        {% if user.is_staff %}
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'producto:editar_producto' product.id %}">Ver producto</a></div>
+                        {% else%}
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'producto:detalle_producto' product.slug %}">Ver producto</a></div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
+
+            {% endfor %}
+
         </div>
 </section>
+{% else %}
+<div class="container px-4 px-lg-5 text-center">
+    <h1>No hay más productos</h1>
+</div>
+{% endif %}
+
 {% endblock contenido %}

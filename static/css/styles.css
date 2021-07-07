@@ -33,12 +33,22 @@
 #imagen-file{
     object-fit: cover;
 }
+
+.item-dropdown{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .navbar-dark .navbar-nav .nav-link {
     color: rgba(255,255,255,.55);
 }
 .navbar-nav .nav-link {
     padding-right: 3px;
     padding-left: 3px;
+}
+
+.navbar-nav .dropdown-menu{
+    position: absolute;
 }
 
 .navbar-nav{
@@ -48,6 +58,11 @@
     filter: brightness(60%);
     height: 350px;
     object-fit: cover;
+}
+
+.imagen{
+    object-fit: cover;
+    max-height: 213px;
 }
 
 .info-slider, .contenedor-file {
@@ -70,6 +85,16 @@
     font-size: 12px;
 }
 
+
+@media screen and (max-width:376px){
+    .contenedor-card{
+        flex-direction: column;
+    }
+
+    .card-producto{
+        width: 100%;
+    }
+}
 @media screen and (min-width: 410px){
     .nav-link {
         font-size: 12px;
@@ -90,6 +115,7 @@
         width: 70%;
         overflow: hidden;
     }
+
 }
 
 

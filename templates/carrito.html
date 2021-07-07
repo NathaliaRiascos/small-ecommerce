@@ -3,37 +3,27 @@
 
 {% block contenido %}
 <h1 class="display-6 fw-bolder mb-3 mt-0 text-center">Carrito</h1>
+{% if productos %}
 <div class="container px-4 px-lg-5 my-5">
     <ol class="list-group list-group-numbered">
+        {% for producto in productos %}
         <li class="list-group-item d-flex justify-content-between align-items-center">
             <div class="ms-2 me-auto">
-                A list item
+                {{producto.titulo}}
             </div>
-            <button class="btn btn-light">
+            <a class="btn btn-light" href="{% url 'ecommerce:eliminar_de_carrito' producto.id%}">
                 <i class="bi bi-trash-fill" style="color: red;"></i>
-            </button>
+            </a>
         </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <div class="ms-2 me-auto">
-                A list item
-            </div>
-            <button class="btn btn-light">
-                <i class="bi bi-trash-fill" style="color: red;"></i>
-            </button>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-           <div class="ms-2 me-auto">
-                A list item
-            </div>
-            <button class="btn btn-light">
-                <i class="bi bi-trash-fill" style="color: red;"></i>
-            </button>
-        </li>
+        {% endfor %}
     </ol>
     <div class="float-end mt-3">
-        <button type="button" class="m-2 btn btn-outline-dark">Vaciar carrito</button>
-        <button type="button" class="m-2 me-0 btn btn-primary">Finalizar compa</button>
+        <<!--h4>Total: {{total}}</h4>-->
+        <a class="m-2 btn btn-outline-dark" href="{% url 'ecommerce:eliminar_carrito' %}">Vaciar carrito</a>
+        <button type="button" class="m-2 me-0 btn btn-primary">Finalizar compra</button>
     </div>
-
+    {% else %}
+            <h1>No hay productos agregados</h1>
+        {% endif %}
 </div>
 {% endblock contenido %}

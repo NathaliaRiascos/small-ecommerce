@@ -4,10 +4,9 @@
 {% block contenido %}
 <!-- Product section-->
 <section class="py-1">
-    <h1 class="display-6 fw-bolder mb-3 mt-0 text-center">Crear Producto</h1>
-    <div class="container px-4 px-lg-5 my-5">
-    
-        <form class="row gx-4 gx-lg-5 align-items-center justify-content-center"  id="formulario" method="POST">
+    <div class="container px-4 px-lg-5">
+        <h2 class="display-6 fw-bolder mb-4 mt-0 text-center">Crear Producto</h2>
+        <form enctype="multipart/form-data" class="row gx-4 gx-lg-5 align-items-center justify-content-center" id="formulario" method="POST">
             {% csrf_token %}
             <div class="col-md-4 mb-5">
                 <div class="contenedor-img-file">
@@ -22,15 +21,16 @@
                 </div>
             </div>
             <div class="col-md-6 d-flex flex-column justify-content-center">
+                
                 <!-- Input categoria -->
                 <label for="exampleDataList" class="form-label">Categoría</label>
                 <input class="form-control mb-3 form_input" name="categoria" list="datalistOptions" id="exampleDataList" placeholder="Selecciona una categoria">
+                
+                <!-- Listar categorias -->
                 <datalist id="datalistOptions">
-                    <option value="San Francisco">
-                    <option value="New York">
-                    <option value="Seattle">
-                    <option value="Los Angeles">
-                    <option value="Chicago">
+                    {% for item in categorias %}
+                        <option value="{{item.nombre}}" class="opcionCategoria">
+                    {% endfor %}
                 </datalist>
 
                 <!-- Input titulo-->
@@ -39,11 +39,17 @@
                     <input type="text" name="titulo" class="form-control form_input" id="exampleFormControlInput1">
                 </div>
 
+                 <!-- Input Slug -->
+                 <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Slug</label>
+                    <input type="text" name="slug" class="form-control form_input" id="exampleFormControlInput1">
+                </div>
+
                 <!-- Precio -->
                 <label for="exampleFormControlInput1" class="form-label">Precio</label>
                 <div class="input-group mb-3">
                     <span class="input-group-text">$</span>
-                    <input type="text" name="precio" class="form-control form_input" aria-label="Amount (to the nearest dollar)">
+                    <input name="precio" class="form-control form_input" aria-label="Amount (to the nearest dollar)">
                 </div>
 
                 <!-- Input descripción -->

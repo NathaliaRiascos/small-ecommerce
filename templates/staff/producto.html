@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block contenido %}
+<!-- Product section-->
+{% if product %}
+<section class="py-1">
+    <div class="container px-4 px-lg-5 ">
+        <h2 class="display-6 fw-bolder mb-4 mt-0 text-center">{{product.titulo}}</h2>
+        <form enctype="multipart/form-data" class="row gx-4 gx-lg-5 align-items-center justify-content-center"  id="formulario" method="POST">
+            {% csrf_token %}
+            <div class="col-md-4 mb-5">
+                <div class="contenedor-img-file">
+                    <div class="contenedor-file">
+                        <div class="boton-file">
+                            <input id="archivo" type="file" name="imagen" class="form_input" accept="image/*"/>
+                            <button class="btn btn-primary ">Cambiar imagen</button>
+                        </div>
+                    </div>
+                    <img id="imagen-file" class="card-img-top mb-md-0"
+                        src="{{product.imagen.url|default_if_none:'imagen'}}" alt="..." />
+                </div>
+            </div>
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+                
+                <!-- Input categoria -->
+                <label for="exampleDataList" class="form-label">Categoría</label>
+                <input class="form-control mb-3 form_input" name="categoria" list="datalistOptions" id="exampleDataList" placeholder="Selecciona una categoria" value="{{product.categoria}}">
+                
+                <!-- Listar categorias -->
+                <datalist id="datalistOptions">
+                    {% for item in categorias %}
+                        <option value="{{item.nombre}}">
+                    {% endfor %}
+                </datalist>
+
+                <!-- Input titulo-->
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Título</label>
+                    <input type="text" name="titulo" class="form-control form_input" id="exampleFormControlInput1" value="{{product.titulo}}">
+                </div>
+
+                <!-- Input Slug -->
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Slug</label>
+                    <input type="text" name="slug" class="form-control form_input" id="exampleFormControlInput1" value="{{product.slug}}" />
+                </div>
+
+                <!-- Precio -->
+                <label for="exampleFormControlInput1" class="form-label">Precio</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input type="text" name="precio" class="form-control form_input" aria-label="Amount (to the nearest dollar)" value="{{product.precio|floatformat}}">
+                </div>
+
+                <!-- Input descripción -->
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+                    <textarea class="form-control form_input" name="descripcion" id="exampleFormControlTextarea1" rows="3" >{{product.descripcion}}</textarea>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <a class="btn btn-primary me-3 w-25" href="{% url 'producto:eliminar_producto' product.id %}">Borrar</a>
+                    <button type="submit" class="btn btn-primary align-self-end w-25">Actualizar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endif %}
+{% endblock contenido %}

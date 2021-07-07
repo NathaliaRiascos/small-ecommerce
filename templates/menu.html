@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-3 mb-5 rounded">
+    <div class="container-fluid" style="max-height: 40px;">
+      <ul class="navbar-nav flex-row mx-auto">
+        {% if not user.is_staff %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'ecommerce:home' %}">Home</a>
+        </li>
+        <li class="nav-item dropdown item-dropdown align-items-center">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false" style="max-width: 103px;">
+            Categoria
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink" >         
+            {% for item in categorias %}
+              <li><a class="dropdown-item" href="{% url 'producto:categoria' item.nombre|slugify %}">{{item.nombre}}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'ecommerce:acerca'%}">Acerca de...</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'ecommerce:contacto' %}">Contacto</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'producto:productos' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'producto:crear_producto' %}">Nuevo producto</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>

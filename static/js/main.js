@@ -2,7 +2,6 @@
 const archivo = document.querySelector('#archivo')
 const imagen = document.querySelector('#imagen-file')
 
-
 archivo.addEventListener('change', () =>{
     let reader = new FileReader();
 

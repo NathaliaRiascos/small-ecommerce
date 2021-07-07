@@ -44,7 +44,7 @@ class Usuario(AbstractBaseUser):
         verbose_name_plural = 'usuarios'
                 
     def __str__(self):
-        return f'Usuario {self.username}'
+        return f'{self.username}'
     
     def has_perm(self, obj = None):
         return True

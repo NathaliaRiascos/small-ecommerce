@@ -5,17 +5,17 @@
 <form class="contenedor border rounded mx-auto p-5" method="POST">
   {% csrf_token %}
     <h2 class="mb-4">Iniciar sesión</h2>
-    <div class="mb-4">
+    <div class="mb-3">
         <label for="formGroupExampleInput" class="form-label">Correo</label>
         <input type="text" name="email" class="form-control" id="formGroupExampleInput" placeholder="Ingresa tu correo">
       </div>
-      <div class="mb-2">
+      <div class="mb-3">
         <label for="formGroupExampleInput2" class="form-label">Contraseña</label>
         <input type="password" name="password" class="form-control" id="formGroupExampleInput2" placeholder="Ingresa tu contrasea">
       </div>
       <p>¿No tienes una cuenta? 
         <a href="{% url 'ecommerce:registro' %}" class="btn btn-link">Click aquí</a></p>
-      <button type="submit" class="btn btn-primary float-end ">Ingresar</button>
+      <button type="submit" class="btn btn-dark float-end ">Ingresar</button>
 </form>
 
 {% endblock contenido %}
